@@ -1,0 +1,42 @@
+ <p-dataTable
+  #dt
+  [rows]="10" 
+  [lazy]="true"
+  [value]="cars"
+  scrollable="true"
+  [loading]="loading"
+  scrollHeight="400px"
+  [totalRecords]="totalRecords"
+  virtualScroll="virtualScroll"
+  (onLazyLoad)="loadCarsLazy($event)"
+>
+  <p-header>List of Cars</p-header>
+  <div class="text-left">
+      <p-multiSelect [options]="columnOptions" [showToggleAll]="false" (onChange)="selectionItemForFilter($event)" [(ngModel)]="cols" maxSelectedLabels="{0} columns selected">
+      </p-multiSelect>
+    </div>
+  <!-- </p-header> -->
+  <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [style]="{'width':'250px'}"></p-column>
+</p-dataTable>
+ <!-- <p-table
+  #dt
+  [rows]="10" 
+  [lazy]="true"
+  [value]="cars"
+  scrollable="true"
+  [loading]="loading"
+  scrollHeight="400px"
+  [totalRecords]="totalRecords"
+  virtualScroll="virtualScroll"
+  (onLazyLoad)="loadCarsLazy($event)"
+  [(selection)]="selectedColumns"
+>
+  <p-header>
+    <p>List of Cars</p>
+    <div class="text-left">
+      <p-multiSelect [options]="columnOptions" [showToggleAll]="false" (onChange)="selectionItemForFilter($event)" [(ngModel)]="cols" maxSelectedLabels="{0} columns selected">
+      </p-multiSelect>
+    </div>
+  </p-header>
+  <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [style]="{'width':'250px'}"></p-column>
+</p-dataTable> -->
